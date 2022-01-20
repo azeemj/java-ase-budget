@@ -16,7 +16,7 @@ public class CategoryController {
 	@Autowired
 	private CategoryService cat_service;
 	
-	@PostMapping("/addcategory")
+	@PostMapping("/add-category")
 	public Category addCategory(@RequestBody Category catObjCategory) {
 		return cat_service.saveCategory(catObjCategory);
 	}
