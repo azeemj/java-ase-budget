@@ -13,7 +13,9 @@ Response:
 {
 content:{
     "id": 2,
-    "name": "Salary"
+    "name": "Salary",
+    "created_at":"datetime"
+    "updated_at":datetime"
 }
 status:true
 }
@@ -44,7 +46,9 @@ Response:
 {
 content:{
    "cat_id":12,
-  "amount":2500
+  "amount":2500,
+  "created_at":"datetime"
+ "updated_at":datetime"
 }
 status:true
 }
@@ -69,6 +73,8 @@ content:{
   "amount":2500,
   "is_recuuring":false,
   "transaction_type":1
+  "created_at":"datetime"
+ "updated_at":datetime"
 }
 status:true
 }
@@ -83,5 +89,34 @@ Response:
    status:true
 }
 
+6.add recurring expenses ,POST, http://localhost:9191/add-transaction
+
+Request body:
+{
+
+"cat_id":12,
+"amount":-5500,   // note if the ammount is more than zero then it is income ,validation is needed to make sure 
+"is_recuuring":true,
+"start_date":"2022-01-12",
+"end_date":"2023-01012",
+"frequency":"weekly" //monthly,every-two-weeks,annualy
+"transaction_type":2 //1- income ,2-expenses 
+}
+
+Response:
+{
+content:{
+   "cat_id":12,
+"amount":-5500,   // note if the ammount is more than zero then it is income ,validation is needed to make sure 
+"is_recuuring":true,
+"start_date":"2022-01-12",
+"end_date":"2023-01012",
+"frequency":"weekly" //monthly,every-two-weeks,annualy
+"transaction_type":2 //1- income ,2-expenses 
+ "created_at":"datetime"
+ "updated_at":datetime"
+}
+status:true
+}
 
 
