@@ -23,7 +23,7 @@ status:true
 
 
 
-2.Remove categories  Delete  http://localhost:9191/categories/{id}
+2.Remove categories  Delete  http://localhost:9191/category/{id}
 
 Response:
 {
