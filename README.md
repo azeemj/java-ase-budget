@@ -32,14 +32,15 @@ Response:
 
 
 
-3.Add budge ,POST Method    http://localhost:9191/budget
+3.Add budget ,POST Method    http://localhost:9191/budget
+Note:Assumption ,budget allow monthly 
 
 Request body:
 {
 
 "cat_id":12,
 "amount":2500
-
+"datetime":"2021-01"
 }
 
 Response:
@@ -111,7 +112,8 @@ content:{
 "is_recuuring":true,
 "start_date":"2022-01-12",
 "end_date":"2023-01012",
-"frequency":"weekly" //monthly,every-two-weeks,annualy
+"frequency":"weekly",
+//monthly,every-two-weeks,annualy,everyday
 "transaction_type":2 //1- income ,2-expenses 
  "created_at":"datetime"
  "updated_at":datetime"
