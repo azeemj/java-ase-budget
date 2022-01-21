@@ -11,11 +11,13 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import com.ase.budgetase.service.CustomResponse;
+
 import lombok.Data;
 
 @Data
 @MappedSuperclass
-public abstract class BaseEntity {
+public abstract class BaseEntity extends CustomResponse {
 
 	@CreatedDate
     @Column(name = "created_at", nullable = true, updatable = false)

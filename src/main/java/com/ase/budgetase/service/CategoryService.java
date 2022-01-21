@@ -7,19 +7,21 @@ import com.ase.budgetase.entity.Category;
 import com.ase.budgetase.repo.CategoryRepository;
 
 import java.util.List;
+import com.ase.budgetase.service.UtilService;
 
 @Service
 public class CategoryService {
 
 	@Autowired
 	private CategoryRepository cat_repo;
-	
+	private UtilService util_serivceService;
 	
 	
 	public Category saveCategory(Category categoryObj) {
 		
-		return cat_repo.save(categoryObj);
-		
+		Category output =cat_repo.save(categoryObj);
+		  
+		return output;
 	}
 	
 	public List <Category> getAllCategories(){
