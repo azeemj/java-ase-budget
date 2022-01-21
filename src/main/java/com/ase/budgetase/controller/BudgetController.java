@@ -11,48 +11,49 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ase.budgetase.entity.Category;
-import com.ase.budgetase.service.CategoryService;
+import com.ase.budgetase.entity.Budget;
+import com.ase.budgetase.service.BudgetService;;
 
 
 
 @RestController
-public class CategoryController {
+public class BudgetController {
 	
 	@Autowired
-	private CategoryService cat_service;
+	private BudgetService budget_service;
 	
-	@PostMapping("/category")
-	public Category addCategory(@RequestBody Category catObjCategory) {
-		return cat_service.saveCategory(catObjCategory);
+	@PostMapping("/budget")
+	public Budget addBudget(@RequestBody Budget budgetObj) {
+		return budget_service.saveBudget(budgetObj);
 	}
 	
+	/*
 	// delete category
-	 @DeleteMapping("/category/{id}")
+	 @DeleteMapping("/delete/{id}")
 	    public String deleteProduct(@PathVariable int id) {
 	        return cat_service.deleteCategoryById(id);
 	    }
 	
 	
 	//update category
-	@PutMapping("/category")
+	@PutMapping("/update")
     public Category updateCategory(@RequestBody Category CategoryObj) {
         return cat_service.updateCategory(CategoryObj);
     }
 	
 	
 	//find Category
-	@GetMapping("/category/{id}")
+	@GetMapping("/catgeory-by-id/{id}")
 	public Category findCategoryById(@PathVariable int id) {
 		return cat_service.getCategoryById(id);
 	}
 
 	
 	//list all category
-	@GetMapping("/categories")
+	
 	public List<Category> findAllCatsCategories() {
         return cat_service.getAllCategories();
     }
-	
+	*/
 
 }

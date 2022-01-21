@@ -13,10 +13,11 @@ public class CategoryService {
 
 	@Autowired
 	private CategoryRepository cat_repo;
-	private Object object;
+	
 	
 	
 	public Category saveCategory(Category categoryObj) {
+		
 		return cat_repo.save(categoryObj);
 		
 	}
@@ -40,14 +41,22 @@ public class CategoryService {
 		
 		cat_repo.deleteById(id);
 		
-		return "Deleted -"+id;
+		return "{content:{"+"Deleted -"+id+ "},status:true }";
 	}
 	
 	public Category updateCategory(Category catObj) {
+		try {
+			
 		
+		System.out.println("catobj"+ catObj.getId());
 		Category exisCategobject = cat_repo.findById(catObj.getId()).orElse(null);
-		exisCategobject.setName(exisCategobject.getName());
+		exisCategobject.setName(catObj.getName());
 		return cat_repo.save(exisCategobject);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Exception"+ e);
+			return catObj;
+		}
 	}
 	
 	

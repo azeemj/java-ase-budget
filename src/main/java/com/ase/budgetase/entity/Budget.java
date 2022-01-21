@@ -1,16 +1,15 @@
 package com.ase.budgetase.entity;
 
 
-import java.util.Set;
+import java.time.YearMonth;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 
 
 import lombok.AllArgsConstructor;
@@ -24,32 +23,42 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "CATEGORY")
-public class Category extends BaseEntity {
+@Table(name = "Budget")
+public class Budget extends BaseEntity {
 	@Id
 	@GeneratedValue
 	private int id;
-	private String name;
+	private float amount;
+	private String yearmonth;
 	
 	
-    public Category()
-    {
-        super();
-    }
+
 	
 	public Integer getId() {
 		// TODO Auto-generated method stub
 		return this.id;
 	}
-	public String getName() {
+	public String getYearMonth() {
 		// TODO Auto-generated method stub
-		return this.name;
+		return this.yearmonth;
 	}
-	public void setName(String name) {
+	public void setYearMonth(String yearmonth) {
 		// TODO Auto-generated method stub
-		this.name = name;
+		this.yearmonth = yearmonth;
 		
 	}
+	
+	
+	public float amount() {
+		// TODO Auto-generated method stub
+		return this.amount;
+	}
+	public void setAmount(Float amount) {
+		// TODO Auto-generated method stub
+		this.amount = amount;
+		
+	}
+	
 	
 	
 
