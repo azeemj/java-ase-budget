@@ -1,6 +1,6 @@
 # java-ase-budget
 
-1. POST Method    http://localhost:9191/add-category
+1. POST Method    http://localhost:9191/category
 
 Request body:
 {
@@ -23,7 +23,7 @@ status:true
 
 
 
-2.Remove categories  Delete  http://localhost:9191/delete-categories/{id}
+2.Remove categories  Delete  http://localhost:9191/categories/{id}
 
 Response:
 {
@@ -32,7 +32,7 @@ Response:
 
 
 
-3.Add budge ,POST Method    http://localhost:9191/add-budget
+3.Add budge ,POST Method    http://localhost:9191/budget
 
 Request body:
 {
@@ -54,7 +54,7 @@ status:true
 }
 
 
-4. Add transaction by category ID ,POST , http://localhost:9191/add-transaction
+4. Add transaction by category ID ,POST , http://localhost:9191/transaction
 
 Typical transactoin (not recurring)
 Request body:
@@ -82,14 +82,14 @@ status:true
 
 5.Remove transactoin by tranaction_id
 
-Delete  http://localhost:9191/delete-taransaction/{id}
+Delete  http://localhost:9191/taransaction/{id}
 
 Response:
 {
    status:true
 }
 
-6.add recurring expenses ,POST, http://localhost:9191/add-transaction
+6.add recurring expenses ,POST, http://localhost:9191/transaction
 
 Request body:
 {
