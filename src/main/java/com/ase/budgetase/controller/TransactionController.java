@@ -1,28 +1,20 @@
 package com.ase.budgetase.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
+import com.ase.budgetase.entity.Budget;
+import com.ase.budgetase.entity.Category;
+import com.ase.budgetase.entity.Tarnsaction;
+import com.ase.budgetase.service.BudgetService;
+import com.ase.budgetase.service.CategoryService;
+import com.ase.budgetase.service.TransactionService;
+import com.ase.budgetase.service.UtilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.ase.budgetase.entity.*;
-
-import com.ase.budgetase.service.*;
-
-import sun.jvm.hotspot.oops.Array;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 
 
@@ -35,7 +27,7 @@ public class TransactionController {
 
 	@Autowired
 	private CategoryService cat_service;
-	
+
 	@Autowired
 	private BudgetService budget_service;
 
@@ -57,11 +49,11 @@ public class TransactionController {
 
 
 		try {
-			
+
 			HashMap<String, Object> map_outputs = new HashMap<String,Object>();
-			
-			 
-			
+
+
+
 			//list all catgories
 			 List<Category> CatouputList = cat_service.getAllCategories();
 
@@ -73,45 +65,45 @@ public class TransactionController {
 			    while(listIterator.hasNext()) {
 			        Category category = listIterator.next();
 			        System.out.print(  "-Cat id  "+category.getId() +"Name"+category.getName());
-			        
+
 			        map_outputs.put("id", category.getId());
 			        map_outputs.put("name", category.getName());
 
 			        List<Tarnsaction> TransOuput = trans_service.getAllTransactionsByCategories(category.getId());
 
 			        System.out.print(  ",TransOuput "+TransOuput);
-			        
+
 			    	HashMap<String, Object> map_output = new HashMap<String, Object>();
 			        Iterator<Tarnsaction> listIteratorTra = TransOuput.iterator();
 			        while(listIteratorTra.hasNext()) {
-			        	
-			        
-			        	
+
+
+
 			        	 Tarnsaction transList= listIteratorTra.next();
-		        	
+
 			        	 map_output.put("id",  transList.getId());
 			        	 map_output.put("amount",  transList.getAmount());
 			        	 map_output.put("isRecurring",  transList.getIsrecurring());
 			        	 map_output.put("datetime",  transList.getdatetime());
-		        	 
+
 			        	//ArrayList asArrayList =new Array();
-		        	 
+
 			        }
-			        
+
 			        map_outputs.put("transaction",map_output);
 			        //get allbudget
 			        List BudgetOuput = budget_service.findAllBudgetsByCategories(category.getId());
 			        Iterator<Budget> listIteratorBudegtIterator = BudgetOuput.iterator();
 //			        while(listIteratorBudegtIterator.hasNext()) {
 //			        	// Tarnsaction transList= listIteratorTra.next();
-//		        	
+//
 //			        	// map_outputs.put("budget",  listIteratorBudegtIterator.next());
-//		        	 
+//
 //			        }
 			    }
 
 
-			   
+
 			return UtilService.generateResponse("Successfully added data!", HttpStatus.OK, map_outputs);
 		} catch (Exception e) {
 			System.out.print(  "-e.getMessage()  "+e.getMessage());
