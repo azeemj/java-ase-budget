@@ -25,5 +25,5 @@ jobs:
             'murshidazher',
             'budget-system',
             'workflows/push-api.yml',
-            'main',
+            'main'
           });
