@@ -1,32 +1,24 @@
 package com.ase.budgetase.entity;
 
-import java.sql.Date;
-import java.time.LocalDateTime;
-
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import com.ase.budgetase.service.CustomResponse;
-
-import lombok.Data;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import java.time.LocalDateTime;
 
 @Data
 @MappedSuperclass
-public abstract class BaseEntity{
+public abstract class BaseEntity {
 
-	
-	
-	@CreatedDate
-    @Column(name = "created_at", nullable = true)
-	protected LocalDateTime createdAt = LocalDateTime.now();
-	
-	@LastModifiedDate
-    @Column(name = "updated_at",nullable = true)
-	protected LocalDateTime updatedAt = LocalDateTime.now();
-	
+
+  @CreatedDate
+  @Column(name = "created_at", nullable = true)
+  protected LocalDateTime createdAt = LocalDateTime.now();
+
+  @LastModifiedDate
+  @Column(name = "updated_at", nullable = true)
+  protected LocalDateTime updatedAt = LocalDateTime.now();
+
 }
