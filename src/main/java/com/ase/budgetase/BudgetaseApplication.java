@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin(origins = "*")
 public class BudgetaseApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BudgetaseApplication.class, args);
-	}
-  
+  public static void main(String[] args) {
+    SpringApplication.run(BudgetaseApplication.class, args);
+  }
+
 }
