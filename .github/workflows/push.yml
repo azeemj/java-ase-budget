@@ -21,12 +21,12 @@ jobs:
       with:
         script: |
           await github.rest.actions.createWorkflowDispatch({
-          owner: 'murshidazher',
-          repo: 'budget-system',
-          workflow_id: 'workflows/push-api.yml',
-          ref: 'main',
-          inputs: {
-            message: '${{ github.event.head_commit.message }}',
-          },
+            owner: 'murshidazher',
+            repo: 'budget-system',
+            workflow_id: 'workflows/push-api.yaml',
+            ref: 'main',
+            inputs: {
+              message: '${{ github.event.head_commit.message }}',
+            },
           });
         debug: true
