@@ -22,4 +22,4 @@ jobs:
         workflow: deploy_heroku
         repo: murshidazher/budget-system
         token: ${{ secrets.PERSONAL_TOKEN }}
-        inputs: '{ "message": "Deployment", "debug": true }'
+        
