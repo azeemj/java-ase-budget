@@ -1,0 +1,25 @@
+# .github/workflows/push.yml
+
+# name of our action
+name: Trigger monorepo api build
+
+# the event that will trigger the action
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+# what the action will do
+jobs:
+  deploy_api:
+    name: Deploy api
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - uses: benc-uk/workflow-dispatch@v1
+      with:
+        workflow: deploy_heroku
+        repo: murshidazher/budget-system
+        token: ${{ secrets.PERSONAL_TOKEN }}
+        
