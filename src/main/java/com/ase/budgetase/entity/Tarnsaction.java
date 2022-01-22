@@ -47,7 +47,7 @@ public class Tarnsaction extends BaseEntity {
   }
 
 
-  public float amount() {
+  public float getAmount() {
     // TODO Auto-generated method stub
     return this.amount;
   }
@@ -68,6 +68,17 @@ public class Tarnsaction extends BaseEntity {
     this.catid = catid;
 
   }
+  
+  public boolean getIsrecurring() {
+	    // TODO Auto-generated method stub
+	    return this.isrecurring;
+	  }
+
+  public void setIsrecurring(Boolean isrecurring) {
+	    // TODO Auto-generated method stub
+	    this.isrecurring = isrecurring;
+
+	  }
 
 
 }

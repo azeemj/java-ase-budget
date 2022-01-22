@@ -2,6 +2,7 @@ package com.ase.budgetase.service;
 
 import com.ase.budgetase.entity.Budget;
 import com.ase.budgetase.entity.Category;
+import com.ase.budgetase.entity.Tarnsaction;
 import com.ase.budgetase.repo.BudgetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,8 +56,18 @@ public class BudgetService {
 			return Obj;
 		}
 	}
+	
+//	
+//	public List<Budget> getAllBudgetsByCategories(int catid) {
+//		
+//		return  (List<Budget>) budget_repo.findAllBudgetsByCategories(catid);
+//	}
 
+	public List<Budget> findAllBudgetsByCategories(int catid) {
+		// TODO Auto-generated method stub
+		return    budget_repo.findAllBudgetsByCategories(catid);
+	}
 
-
+	
 
 }
