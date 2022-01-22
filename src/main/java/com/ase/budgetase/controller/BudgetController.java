@@ -39,33 +39,30 @@ public class BudgetController {
         }	 
 	}
 	
-	/*
-	// delete category
-	 @DeleteMapping("/delete/{id}")
-	    public String deleteProduct(@PathVariable int id) {
-	        return cat_service.deleteCategoryById(id);
+	
+	// delete budget
+		 @DeleteMapping("/budget/{id}")
+		    public ResponseEntity<Object> deleteBudget(@PathVariable int id) {
+			 try {
+				 boolean output = budget_service.deleteBudgetId(id);
+				 return UtilService.generateResponse("Successfully added data!", HttpStatus.OK, output);
+			 } catch (Exception e) {
+		            return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+		        }	   
+		    }
+		
+		
+		//update category
+		@PutMapping("/budget")
+	    public ResponseEntity<Object> updateBudget(@RequestBody Budget CategoryObj) {
+			try {
+				Budget output = budget_service.updateCategory(CategoryObj);
+		        return UtilService.generateResponse("Successfully updated data!", HttpStatus.OK, output);
+			} catch (Exception e) {
+	            return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+	        }	
 	    }
 	
 	
-	//update category
-	@PutMapping("/update")
-    public Category updateCategory(@RequestBody Category CategoryObj) {
-        return cat_service.updateCategory(CategoryObj);
-    }
-	
-	
-	//find Category
-	@GetMapping("/catgeory-by-id/{id}")
-	public Category findCategoryById(@PathVariable int id) {
-		return cat_service.getCategoryById(id);
-	}
-
-	
-	//list all category
-	
-	public List<Category> findAllCatsCategories() {
-        return cat_service.getAllCategories();
-    }
-	*/
 
 }

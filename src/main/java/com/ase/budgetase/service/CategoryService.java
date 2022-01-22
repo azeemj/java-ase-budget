@@ -40,10 +40,14 @@ public class CategoryService {
 	}
 	
 	public boolean deleteCategoryById(int id) {
-		
-		
-		
+		try {
+		cat_repo.deleteById(id);
 		return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Exception"+ e);
+			return false;
+		}
 	}
 	
 	public Category updateCategory(Category catObj) {
