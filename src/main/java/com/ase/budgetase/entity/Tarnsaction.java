@@ -1,9 +1,11 @@
 package com.ase.budgetase.entity;
 
 
+import java.time.LocalDateTime;
 import java.time.YearMonth;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,9 +32,11 @@ public class Tarnsaction extends BaseEntity {
 	@GeneratedValue
 	private int id;
 	private float amount;
-	private String yearmonth;
 	private boolean isrecurring;
 	
+	@Column(name = "datetime")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime datetime;
 	
 	
 
@@ -40,13 +45,13 @@ public class Tarnsaction extends BaseEntity {
 		// TODO Auto-generated method stub
 		return this.id;
 	}
-	public String getYearMonth() {
+	public LocalDateTime getDatetime() {
 		// TODO Auto-generated method stub
-		return this.yearmonth;
+		return this.datetime;
 	}
-	public void setYearMonth(String yearmonth) {
+	public void setDatetime(LocalDateTime yearmonth) {
 		// TODO Auto-generated method stub
-		this.yearmonth = yearmonth;
+		this.datetime = datetime;
 		
 	}
 	

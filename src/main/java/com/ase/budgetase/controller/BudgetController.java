@@ -3,6 +3,8 @@ package com.ase.budgetase.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ase.budgetase.entity.Budget;
-import com.ase.budgetase.service.BudgetService;;
+import com.ase.budgetase.entity.Category;
+import com.ase.budgetase.service.BudgetService;
+import com.ase.budgetase.service.UtilService;;
 
 
 
@@ -23,8 +27,16 @@ public class BudgetController {
 	private BudgetService budget_service;
 	
 	@PostMapping("/budget")
-	public Budget addBudget(@RequestBody Budget budgetObj) {
-		return budget_service.saveBudget(budgetObj);
+	public ResponseEntity<Object> addBudget(@RequestBody Budget budgetObj) {
+		 
+		
+		try {
+			Budget ouputBudget= budget_service.saveBudget(budgetObj);
+		
+			return UtilService.generateResponse("Successfully added data!", HttpStatus.OK, ouputBudget);
+		} catch (Exception e) {
+            return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }	 
 	}
 	
 	/*

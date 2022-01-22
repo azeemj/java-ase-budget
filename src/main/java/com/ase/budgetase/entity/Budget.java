@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.YearMonth;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,6 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +35,12 @@ public class Budget extends BaseEntity {
 	@GeneratedValue
 	private int id;
 	private float amount;
+	private int catid;
+	
+	@Column(name = "datetime")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime datetime;
+	
 	
 	
 
@@ -43,7 +53,7 @@ public class Budget extends BaseEntity {
 		// TODO Auto-generated method stub
 		return this.datetime;
 	}
-	public void setYearMonth(LocalDateTime datetime) {
+	public void datetime(LocalDateTime datetime) {
 		// TODO Auto-generated method stub
 		this.datetime = datetime;
 		
@@ -57,6 +67,16 @@ public class Budget extends BaseEntity {
 	public void setAmount(Float amount) {
 		// TODO Auto-generated method stub
 		this.amount = amount;
+		
+	}
+	
+	public float catid() {
+		// TODO Auto-generated method stub
+		return this.catid;
+	}
+	public void setCatid(int catid) {
+		// TODO Auto-generated method stub
+		this.catid = catid;
 		
 	}
 	
