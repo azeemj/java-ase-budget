@@ -33,9 +33,9 @@ public class TransactionService  {
 		return trans_repo.findAll();
 	}
 
-	public List <Tarnsaction> getAllTransactionsByCategories(int catid){
+	public List<Tarnsaction> getAllTransactionsByCategories(int catid){
 
-		return trans_repo.findAllTransactionsByCategories(catid);
+		return  trans_repo.findAllTransactionsByCategories(catid);
 	}
 
 
