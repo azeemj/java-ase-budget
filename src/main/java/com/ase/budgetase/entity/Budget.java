@@ -1,6 +1,7 @@
 package com.ase.budgetase.entity;
 
 
+import java.time.LocalDateTime;
 import java.time.YearMonth;
 
 import javax.persistence.CascadeType;
@@ -29,7 +30,7 @@ public class Budget extends BaseEntity {
 	@GeneratedValue
 	private int id;
 	private float amount;
-	private String yearmonth;
+	private LocalDateTime datetime;
 	
 	
 
@@ -38,13 +39,13 @@ public class Budget extends BaseEntity {
 		// TODO Auto-generated method stub
 		return this.id;
 	}
-	public String getYearMonth() {
+	public LocalDateTime getdatetime() {
 		// TODO Auto-generated method stub
-		return this.yearmonth;
+		return this.datetime;
 	}
-	public void setYearMonth(String yearmonth) {
+	public void setYearMonth(LocalDateTime datetime) {
 		// TODO Auto-generated method stub
-		this.yearmonth = yearmonth;
+		this.datetime = datetime;
 		
 	}
 	

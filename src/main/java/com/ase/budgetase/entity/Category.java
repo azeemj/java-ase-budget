@@ -30,6 +30,7 @@ public class Category extends BaseEntity {
 	@GeneratedValue
 	private int id;
 	private String name;
+	private String icon;
 	
 	
     public Category()
@@ -48,6 +49,16 @@ public class Category extends BaseEntity {
 	public void setName(String name) {
 		// TODO Auto-generated method stub
 		this.name = name;
+		
+	}
+	
+	public String getIcon() {
+		// TODO Auto-generated method stub
+		return this.icon;
+	}
+	public void seIcon(String icon) {
+		// TODO Auto-generated method stub
+		this.icon = icon;
 		
 	}
 	

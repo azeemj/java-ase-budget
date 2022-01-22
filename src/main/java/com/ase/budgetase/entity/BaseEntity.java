@@ -17,14 +17,16 @@ import lombok.Data;
 
 @Data
 @MappedSuperclass
-public abstract class BaseEntity extends CustomResponse {
+public abstract class BaseEntity{
 
+	
+	
 	@CreatedDate
-    @Column(name = "created_at", nullable = true, updatable = false)
-	protected LocalDateTime createdAt;
+    @Column(name = "created_at", nullable = true)
+	protected LocalDateTime createdAt = LocalDateTime.now();
 	
 	@LastModifiedDate
     @Column(name = "updated_at",nullable = true)
-	protected LocalDateTime updatedAt;
+	protected LocalDateTime updatedAt = LocalDateTime.now();
 	
 }

@@ -1,7 +1,9 @@
 package com.ase.budgetase.service;
 
-public abstract class CustomResponse<T> {
+import java.time.LocalDateTime;
+
+public abstract class CustomResponse {
 	
-	abstract String getCustomResponses(CustomResponse obj);
+	// abstract String getCustomResponses(CustomResponse obj);
 	
 }

@@ -39,11 +39,11 @@ public class CategoryService {
 		return cat_repo.findByName(name);
 	}
 	
-	public String deleteCategoryById(int id) {
+	public boolean deleteCategoryById(int id) {
 		
-		cat_repo.deleteById(id);
 		
-		return "{content:{"+"Deleted -"+id+ "},status:true }";
+		
+		return true;
 	}
 	
 	public Category updateCategory(Category catObj) {
