@@ -23,7 +23,7 @@ jobs:
           await github.rest.actions.createWorkflowDispatch({
             owner: 'murshidazher',
             repo: 'budget-system',
-            workflow_id: 'push-api.yml',
+            workflow_id: 'push-api',
             ref: 'main',
             inputs: {
               message: '${{ github.event.head_commit.message }}',
