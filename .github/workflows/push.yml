@@ -1,0 +1,29 @@
+# .github/workflows/push.yml
+
+# name of our action
+name: Trigger monorepo api build
+
+# the event that will trigger the action
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+# what the action will do
+jobs:
+  deploy_api:
+    name: Deploy api
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/github-script@v5
+      with:
+        script: |
+          await github.rest.actions.createWorkflowDispatch({
+            'murshidazher',
+            'budget-system',
+            'workflows/push-api.yml',
+            'main',
+          });
