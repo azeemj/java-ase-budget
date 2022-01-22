@@ -33,6 +33,7 @@ public class Tarnsaction extends BaseEntity {
 	private int id;
 	private float amount;
 	private boolean isrecurring;
+	private int catid;
 	
 	@Column(name = "datetime")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -45,11 +46,11 @@ public class Tarnsaction extends BaseEntity {
 		// TODO Auto-generated method stub
 		return this.id;
 	}
-	public LocalDateTime getDatetime() {
+	public LocalDateTime getdatetime() {
 		// TODO Auto-generated method stub
 		return this.datetime;
 	}
-	public void setDatetime(LocalDateTime yearmonth) {
+	public void datetime(LocalDateTime datetime) {
 		// TODO Auto-generated method stub
 		this.datetime = datetime;
 		
@@ -66,6 +67,15 @@ public class Tarnsaction extends BaseEntity {
 		
 	}
 	
+	public float catid() {
+		// TODO Auto-generated method stub
+		return this.catid;
+	}
+	public void setCatid(int catid) {
+		// TODO Auto-generated method stub
+		this.catid = catid;
+		
+	}
 	
 	
 
