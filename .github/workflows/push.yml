@@ -23,8 +23,7 @@ jobs:
           await github.rest.actions.createWorkflowDispatch({
             owner: 'murshidazher',
             repo: 'budget-system',
-            workflow_id: 'deploy_heroku',
-            workflow: 'deploy_heroku',
+            workflow_id: '18442530',
             ref: 'main',
             inputs: {
               message: '${{ github.event.head_commit.message }}',
