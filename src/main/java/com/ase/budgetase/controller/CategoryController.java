@@ -53,7 +53,7 @@ public class CategoryController {
     public ResponseEntity<Object> updateCategory(@RequestBody Category CategoryObj) {
 		try {
 			Category updateCategory = cat_service.updateCategory(CategoryObj);
-	        return UtilService.generateResponse("Successfully added data!", HttpStatus.OK, updateCategory);
+	        return UtilService.generateResponse("Successfully updated data!", HttpStatus.OK, updateCategory);
 		} catch (Exception e) {
             return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
         }	
@@ -62,15 +62,27 @@ public class CategoryController {
 	
 	//find Category
 	@GetMapping("/category/{id}")
-	public Category findCategoryById(@PathVariable int id) {
-		return cat_service.getCategoryById(id);
+	public ResponseEntity<Object> findCategoryById(@PathVariable int id) {
+		 
+		try {
+			Category findCategory = cat_service.getCategoryById(id);
+	        return UtilService.generateResponse("Successfully found data!", HttpStatus.OK, findCategory);
+		} catch (Exception e) {
+            return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }	
 	}
 
 	
 	//list all category
 	@GetMapping("/categories")
-	public List<Category> findAllCatsCategories() {
-        return cat_service.getAllCategories();
+	public ResponseEntity<Object> findAllCatsCategories() {
+         
+        try {
+        	List <Category> listCat = cat_service.getAllCategories();
+	        return UtilService.generateResponse("Successfully found data!", HttpStatus.OK, listCat);
+		} catch (Exception e) {
+            return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }	
     }
 	
 
