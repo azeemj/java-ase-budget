@@ -50,10 +50,12 @@ public class TransactionController {
 
 			// get the year and covert it into integer
 			String[] temp = datetime.split("\\-");
+
 			
 			//total amount category wise
 			float transactionCategoryWsie = 0;
 	
+
 			ArrayList<Object> array_list_categories = new ArrayList<Object>();
 
 			// list all catgories
@@ -61,15 +63,16 @@ public class TransactionController {
 
 			Iterator<Category> listIterator = CatouputList.iterator();
 			while (listIterator.hasNext()) {
-				
+
 				HashMap<String, Object> map_outputs = new HashMap<String, Object>();
-				
+
 				Category category = listIterator.next();
-				
+
 				map_outputs.put("id", category.getId());
 				map_outputs.put("name", category.getName());
+        map_outputs.put("icon", category.getIcon());
 
-				List<Transaction> TransOuput = trans_service.getAllTransactionsByCategories(category.getId(),
+        List<Transaction> TransOuput = trans_service.getAllTransactionsByCategories(category.getId(),
 						Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
 
 				System.out.print(",TransOuput " + TransOuput);
@@ -96,19 +99,27 @@ public class TransactionController {
 
 				}
 
-				map_outputs.put("transaction", array_list_trans);
-				
+				map_outputs.put("transactions", array_list_trans);
+
 				// get allbudget
 				ArrayList<Object> array_list_budget = new ArrayList<Object>();
+
 				
 				List BudgetOuput = budget_service.findAllBudgetsByCategories(category.getId(),
 						Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
 				
+
+
 				Iterator<Budget> listIteratorBudegtIterator = BudgetOuput.iterator();
-				
+
 				while (listIteratorBudegtIterator.hasNext()) {
+
 					
 					HashMap<String, Object> map_budget = new HashMap<String, Object>();
+
+
+					HashMap<String, Object> map_output = new HashMap<String, Object>();
+
 
 					Budget budgetList = listIteratorBudegtIterator.next();
 
@@ -120,8 +131,13 @@ public class TransactionController {
 
 					array_list_budget.add(map_budget);
 				}
+
 				
 				map_outputs.put("budget", array_list_budget);
+
+
+				map_outputs.put("budget", array_list_trans);
+
 
 				map_outputs.put("totalaCtegorywise",transactionCategoryWsie);
 				
@@ -146,5 +162,5 @@ public class TransactionController {
 	    }
 	  }
 
-	
+
 }
