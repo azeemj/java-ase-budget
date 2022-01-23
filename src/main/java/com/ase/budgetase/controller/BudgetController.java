@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.web.bind.annotation.*;
 
-
-
 @RestController
 @CrossOrigin(origins = "*")
 public class BudgetController {
@@ -32,40 +29,35 @@ public class BudgetController {
 	@PostMapping("/budget")
 	public ResponseEntity<Object> addBudget(@RequestBody Budget budgetObj) {
 
-
 		try {
-			Budget ouputBudget= budget_service.saveBudget(budgetObj);
+			Budget ouputBudget = budget_service.saveBudget(budgetObj);
 
 			return UtilService.generateResponse("Successfully added data!", HttpStatus.OK, ouputBudget);
 		} catch (Exception e) {
-            return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
-        }
+			return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+		}
 	}
 
-
 	// delete budget
-		 @DeleteMapping("/budget/{id}")
-		    public ResponseEntity<Object> deleteBudget(@PathVariable int id) {
-			 try {
-				 boolean output = budget_service.deleteBudgetId(id);
-				 return UtilService.generateResponse("Successfully added data!", HttpStatus.OK, output);
-			 } catch (Exception e) {
-		            return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
-		        }
-		    }
+	@DeleteMapping("/budget/{id}")
+	public ResponseEntity<Object> deleteBudget(@PathVariable int id) {
+		try {
+			boolean output = budget_service.deleteBudgetId(id);
+			return UtilService.generateResponse("Successfully added data!", HttpStatus.OK, output);
+		} catch (Exception e) {
+			return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+		}
+	}
 
-
-		//update category
-		@PutMapping("/budget")
-	    public ResponseEntity<Object> updateBudget(@RequestBody Budget CategoryObj) {
-			try {
-				Budget output = budget_service.updateCategory(CategoryObj);
-		        return UtilService.generateResponse("Successfully updated data!", HttpStatus.OK, output);
-			} catch (Exception e) {
-	            return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
-	        }
-	    }
-
-
+	// update category
+	@PutMapping("/budget")
+	public ResponseEntity<Object> updateBudget(@RequestBody Budget CategoryObj) {
+		try {
+			Budget output = budget_service.updateCategory(CategoryObj);
+			return UtilService.generateResponse("Successfully updated data!", HttpStatus.OK, output);
+		} catch (Exception e) {
+			return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+		}
+	}
 
 }
