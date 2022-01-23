@@ -2,7 +2,7 @@ package com.ase.budgetase.controller;
 
 import com.ase.budgetase.entity.Budget;
 import com.ase.budgetase.entity.Category;
-import com.ase.budgetase.entity.Tarnsaction;
+import com.ase.budgetase.entity.Transaction;
 import com.ase.budgetase.service.BudgetService;
 import com.ase.budgetase.service.CategoryService;
 import com.ase.budgetase.service.TransactionService;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
 
 
 
@@ -32,11 +33,11 @@ public class TransactionController {
 	private BudgetService budget_service;
 
 	@PostMapping("/transaction")
-	public ResponseEntity<Object> addTransAction(@RequestBody Tarnsaction obj) {
+	public ResponseEntity<Object> addTransAction(@RequestBody Transaction obj) {
 
 
 		try {
-			Tarnsaction ouput= trans_service.saveTrans(obj);
+			Transaction ouput= trans_service.saveTrans(obj);
 
 			return UtilService.generateResponse("Successfully added data!", HttpStatus.OK, ouput);
 		} catch (Exception e) {
@@ -69,17 +70,21 @@ public class TransactionController {
 			        map_outputs.put("id", category.getId());
 			        map_outputs.put("name", category.getName());
 
-			        List<Tarnsaction> TransOuput = trans_service.getAllTransactionsByCategories(category.getId());
+			        List<Transaction> TransOuput = trans_service.getAllTransactionsByCategories(category.getId());
 
 			        System.out.print(  ",TransOuput "+TransOuput);
 
-			    	HashMap<String, Object> map_output = new HashMap<String, Object>();
-			        Iterator<Tarnsaction> listIteratorTra = TransOuput.iterator();
+			        
+			    	//HashMap<String, Object> map_output = new HashMap<String, Object>();
+			        HashMap<String, Object> map_output = new HashMap<String, Object>();
+
+
+			        Iterator<Transaction> listIteratorTra = TransOuput.iterator();
 			        while(listIteratorTra.hasNext()) {
 
 
 
-			        	 Tarnsaction transList= listIteratorTra.next();
+			        	Transaction transList= listIteratorTra.next();
 
 			        	 map_output.put("id",  transList.getId());
 			        	 map_output.put("amount",  transList.getAmount());
@@ -89,6 +94,10 @@ public class TransactionController {
 			        	//ArrayList asArrayList =new Array();
 
 			        }
+
+			        String myJsonObj2 = "{name:'Website'}";
+			        // JSONObject jsonObject = new JSONObject();
+			        
 
 			        map_outputs.put("transaction",map_output);
 			        //get allbudget
