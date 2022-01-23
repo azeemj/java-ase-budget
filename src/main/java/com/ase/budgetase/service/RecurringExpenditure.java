@@ -11,7 +11,7 @@ import com.ase.budgetase.repo.TransactionRepository;
 
 public class RecurringExpenditure extends IncomeService {
 
-	public Transaction saveTrans(Transaction obj) {
+	public Transaction saveTrans(Transaction obj, TransactionRepository trans_repo) {
 
 		// return trans_repo.save(obj);
 		setRecurring(obj, trans_repo);
@@ -55,16 +55,16 @@ public class RecurringExpenditure extends IncomeService {
 						obj2 = obj;
 
 						System.out.println(j + "  obj  " + obj.getdatetime());
-						// Budget savedObj = trans_repo.save(obj);
+						trans_repo.save(obj);
 
 						objList.add(obj2);
 					}
 					System.out.println("  objList  " + objList);
 					trans_repo.saveAll(objList);
 				}
-				{
-					Transaction savedObj = trans_repo.save(obj);
-				}
+//				{
+//					Transaction savedObj = trans_repo.save(obj);
+//				}
 
 				return true;
 			}
