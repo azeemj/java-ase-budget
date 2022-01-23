@@ -14,12 +14,10 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-public class TransactionService  {
+public class TransactionService {
 
 	@Autowired
 	private TransactionRepository trans_repo;
-
-
 
 	public Transaction saveTrans(Transaction obj) {
 
@@ -27,57 +25,19 @@ public class TransactionService  {
 
 	}
 
-	public List <Transaction> getAllTransactions(){
+	public List<Transaction> getAllTransactions() {
 
 		return trans_repo.findAll();
 	}
 
-	public List<Transaction> getAllTransactionsByCategories(int catid, int year, int month ){
+	public List<Transaction> getAllTransactionsByCategories(int catid, int year, int month) {
 
-		return  trans_repo.findAllTransactionsByCategories(catid,year, month);
+		return trans_repo.findAllTransactionsByCategories(catid, year, month);
 	}
 
-
-
-
-	public List <Transaction> getTransactionsByMonthYear(int year, int month){
-		System.out.print("year"+year);
-		return   Collections.emptyList();
+	public List<Transaction> getTransactionsByMonthYear(int year, int month) {
+		System.out.print("year" + year);
+		return Collections.emptyList();
 	}
-
-
-
-//	public Budget getCategoryById(int id){
-//
-//		return budget_repo.findById(id).orElse(null);
-//	}
-//
-////	public Budget getCategoryByName(String name){
-////
-////		return budget_repo.findByName(name);
-////	}
-//
-//	public String deleteCategoryById(int id) {
-//
-//		budget_repo.deleteById(id);
-//
-//		return "{content:{"+"Deleted -"+id+ "},status:true }";
-//	}
-//
-//	public Budget updateCategory(Budget Obj) {
-//		try {
-//
-//
-//		System.out.println("catobj"+ Obj.getId());
-//		Budget exisCategobject = budget_repo.findById(Obj.getId()).orElse(null);
-//		exisCategobject.setAmount(Obj.amount());
-//		return budget_repo.save(exisCategobject);
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			System.out.println("Exception"+ e);
-//			return Obj;
-//		}
-//	}
-//
 
 }
