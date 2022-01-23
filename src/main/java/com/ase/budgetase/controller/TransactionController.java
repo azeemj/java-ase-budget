@@ -3,6 +3,8 @@ package com.ase.budgetase.controller;
 import com.ase.budgetase.entity.Budget;
 import com.ase.budgetase.entity.Category;
 import com.ase.budgetase.entity.Transaction;
+import com.ase.budgetase.interfaces.CurrencyInterface;
+import com.ase.budgetase.logic.CurrencyFactory;
 import com.ase.budgetase.service.BudgetService;
 import com.ase.budgetase.service.CategoryService;
 import com.ase.budgetase.service.TransactionService;
@@ -172,6 +174,19 @@ public class TransactionController {
 				return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
 			}
 		}
+		
+		
+		@GetMapping("/currency/{name}")
+		  public ResponseEntity<Object> findCategoryById(@PathVariable String name) {
+
+		    try {
+		    	CurrencyInterface usd = CurrencyFactory.createCurrency(name);
+		    	
+		      return UtilService.generateResponse("Successfully found data!", HttpStatus.OK, usd);
+		    } catch (Exception e) {
+		      return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+		    }
+		  }
 
 
 }
