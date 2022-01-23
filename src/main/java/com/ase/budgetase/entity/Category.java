@@ -23,7 +23,7 @@ public class Category extends BaseEntity {
   @GeneratedValue
   private int id;
   private String name;
-  private String icon;
+  private String icon = "patch-exclamation";
 
   public Integer getId() {
     // TODO Auto-generated method stub

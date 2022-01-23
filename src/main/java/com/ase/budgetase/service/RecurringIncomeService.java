@@ -2,10 +2,12 @@ package com.ase.budgetase.service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.ase.budgetase.entity.Category;
 import com.ase.budgetase.entity.Transaction;
 import com.ase.budgetase.repo.TransactionRepository;
 
@@ -58,14 +60,23 @@ public class RecurringIncomeService extends IncomeService {
 						// obj2 = obj;
 						obj.setDescription("recurring"+j);
 						obj2 = (Transaction) obj;
-
-						System.out.println(j + "  obj  " + obj.getdatetime());
-						trans_repo.save(obj);
 						
-
+						System.out.println(j + "  obj  " + obj.getdatetime());
+						trans_repo.save(obj2);
+						Thread.sleep(100);
+						obj2.setCatid(23);
+						
 						objList.add(obj2);
+						obj2 = null;
 					}
 					System.out.println("  objList  " + objList);
+					;
+
+					Iterator<Transaction> listIterator = objList.iterator();
+					while (listIterator.hasNext()) {
+						
+						System.out.println("  objList  " + listIterator.next().getdatetime());
+					}
 					trans_repo.saveAll(objList);
 				}
 //				{
