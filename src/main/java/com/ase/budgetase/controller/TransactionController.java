@@ -136,6 +136,8 @@ public class TransactionController {
 				map_outputs.put("budget", array_list_budget);
 				map_outputs.put("totalAmount",transactionCategoryWsie);
 
+        transactionCategoryWsie = 0;
+
 				array_list_categories.add(map_outputs);
 			}
 
