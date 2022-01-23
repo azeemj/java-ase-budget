@@ -61,6 +61,18 @@ public class TransactionService {
 		}
 	}
 	
+	
+	public boolean deleteTransyById(int id) {
+		try {
+			trans_repo.deleteById(id);
+		return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Exception"+ e);
+			return false;
+		}
+	}
+	
 	public static boolean setRecurring(Transaction obj, TransactionRepository trans_repo) {
 		  
 		try {System.out.println("setRecurring"+ obj);

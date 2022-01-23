@@ -159,7 +159,16 @@ public class TransactionController {
 	    }
 	  }
 	  
-	  
+	// delete budget
+		@DeleteMapping("/transaction/{id}")
+		public ResponseEntity<Object> deleteTrans(@PathVariable int id) {
+			try {
+				boolean output = trans_service.deleteTransyById(id);
+				return UtilService.generateResponse("Successfully deleted!", HttpStatus.OK, output);
+			} catch (Exception e) {
+				return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+			}
+		}
 
 
 }
