@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -46,16 +47,19 @@ public class TransactionController {
         }
 	}
 
-	@GetMapping("/transaction-by-categories")
-	public ResponseEntity<Object> getTransActionsByCategories() {
+	@GetMapping("/transaction-by-categories/{datetime}")
+	public ResponseEntity<Object> getTransActionsByCategories(@PathVariable String datetime) {
 
 
 		try {
+			
+			
+			//get the year and covert it into integer
+			String [] temp = datetime.split("\\-");
+			System.out.print("test"+ Integer.parseInt(temp[0]));
+			
 			ArrayList<Object> array_list_categories = new ArrayList<Object>();
 			
-
-
-
 			//list all catgories
 			 List<Category> CatouputList = cat_service.getAllCategories();
 
@@ -72,7 +76,8 @@ public class TransactionController {
 			        map_outputs.put("id", category.getId());
 			        map_outputs.put("name", category.getName());
 
-			        List<Transaction> TransOuput = trans_service.getAllTransactionsByCategories(category.getId());
+			        List<Transaction> TransOuput = trans_service.getAllTransactionsByCategories(category.getId(),Integer.parseInt(temp[0]),
+			        		Integer.parseInt(temp[1]));
 
 			        System.out.print(  ",TransOuput "+TransOuput);
 
@@ -100,9 +105,6 @@ public class TransactionController {
 
 			        }
 
-			        String myJsonObj2 = "{name:'Website'}";
-			        // JSONObject jsonObject = new JSONObject();
-			        
 
 			        map_outputs.put("transaction",array_list_trans);
 			        //get allbudget

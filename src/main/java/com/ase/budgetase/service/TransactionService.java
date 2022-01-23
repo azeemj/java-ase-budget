@@ -32,9 +32,9 @@ public class TransactionService  {
 		return trans_repo.findAll();
 	}
 
-	public List<Transaction> getAllTransactionsByCategories(int catid){
+	public List<Transaction> getAllTransactionsByCategories(int catid, int year, int month ){
 
-		return  trans_repo.findAllTransactionsByCategories(catid);
+		return  trans_repo.findAllTransactionsByCategories(catid,year, month);
 	}
 
 
