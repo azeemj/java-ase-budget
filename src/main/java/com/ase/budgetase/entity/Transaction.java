@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "Tarnsaction")
+@Table(name = "Transaction")
 public class Tarnsaction extends BaseEntity {
   @Id
   @GeneratedValue
@@ -24,6 +24,7 @@ public class Tarnsaction extends BaseEntity {
   private float amount;
   private boolean isrecurring;
   private int catid;
+  private String description;
 
   @Column(name = "datetime")
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -58,7 +59,7 @@ public class Tarnsaction extends BaseEntity {
 
   }
 
-  public float catid() {
+  public float getCatid() {
     // TODO Auto-generated method stub
     return this.catid;
   }
@@ -77,6 +78,17 @@ public class Tarnsaction extends BaseEntity {
   public void setIsrecurring(Boolean isrecurring) {
 	    // TODO Auto-generated method stub
 	    this.isrecurring = isrecurring;
+
+	  }
+  
+  public String getDescription() {
+	    // TODO Auto-generated method stub
+	    return this.description;
+	  }
+
+  public void setDescription(String description) {
+	    // TODO Auto-generated method stub
+	    this.description = description;
 
 	  }
 

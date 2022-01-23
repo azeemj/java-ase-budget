@@ -81,7 +81,8 @@ public class TransactionController {
 
 			        System.out.print(  ",TransOuput "+TransOuput);
 			        
-			    	HashMap<String, Object> map_output = new HashMap<String, Object>();
+			    	//HashMap<String, Object> map_output = new HashMap<String, Object>();
+			        HashMap<String, Object> map_output = new HashMap<String, Object>();
 			        Iterator<Tarnsaction> listIteratorTra = TransOuput.iterator();
 			        while(listIteratorTra.hasNext()) {
 			        	
@@ -97,6 +98,8 @@ public class TransactionController {
 			        	//ArrayList asArrayList =new Array();
 		        	 
 			        }
+			        String myJsonObj2 = "{name:'Website'}";
+			        // JSONObject jsonObject = new JSONObject();
 			        
 			        map_outputs.put("transaction",map_output);
 			        //get allbudget
