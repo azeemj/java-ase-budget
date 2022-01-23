@@ -55,6 +55,7 @@ public class CategoryService {
 		System.out.println("catobj"+ catObj.getId());
 		Category exisCategobject = cat_repo.findById(catObj.getId()).orElse(null);
 		exisCategobject.setName(catObj.getName());
+		exisCategobject.seIcon(catObj.getIcon());
 		return cat_repo.save(exisCategobject);
 		} catch (Exception e) {
 			// TODO: handle exception

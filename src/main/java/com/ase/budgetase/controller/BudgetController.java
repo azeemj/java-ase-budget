@@ -56,9 +56,9 @@ public class BudgetController {
 
 	// update category
 	@PutMapping("/budget")
-	public ResponseEntity<Object> updateBudget(@RequestBody Budget CategoryObj) {
+	public ResponseEntity<Object> updateBudget(@RequestBody Budget obj) {
 		try {
-			Budget output = budget_service.updateBudget(CategoryObj);
+			Budget output = budget_service.updateBudget(obj);
 			return UtilService.generateResponse("Successfully updated data!", HttpStatus.OK, output);
 		} catch (Exception e) {
 			return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
