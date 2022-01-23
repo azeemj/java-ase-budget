@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.ase.budgetase.entity.Transaction;
 import com.ase.budgetase.repo.TransactionRepository;
 
+import net.bytebuddy.asm.Advice.This;
+
 public class RecurringIncomeService extends IncomeService {
 
 	public Transaction saveTrans(Transaction obj, TransactionRepository trans_repo) {
@@ -51,11 +53,15 @@ public class RecurringIncomeService extends IncomeService {
 
 					for (int j = startMonth; j < temMonth; j++) {
 						obj.datetime(obj.getStartdate().plusMonths(j));
+						
 						Transaction obj2 = new Transaction();
-						obj2 = obj;
+						// obj2 = obj;
+						obj.setDescription("recurring"+j);
+						obj2 = (Transaction) obj;
 
 						System.out.println(j + "  obj  " + obj.getdatetime());
 						trans_repo.save(obj);
+						
 
 						objList.add(obj2);
 					}

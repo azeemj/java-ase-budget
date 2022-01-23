@@ -10,9 +10,17 @@ public class Expenditure extends AbstractTransactionService  {
 	@Autowired
 	protected TransactionRepository trans_repo;
 	
-	public Transaction saveTrans(Transaction obj) {
+	public Transaction saveTrans(Transaction obj, TransactionRepository trans_repo) {
 		
-		return trans_repo.save(obj);
+		try {
+			
+			return trans_repo.save(obj);
+					
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.print("Exception xyz" + e);
+			return obj;
+		}
 				
 
 	}
