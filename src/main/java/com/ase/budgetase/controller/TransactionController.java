@@ -52,7 +52,7 @@ public class TransactionController {
 
 		try {
 			ArrayList<Object> array_list_categories = new ArrayList<Object>();
-			HashMap<String, Object> map_outputs = new HashMap<String,Object>();
+			
 
 
 
@@ -65,6 +65,7 @@ public class TransactionController {
 
 			 Iterator<Category> listIterator = CatouputList.iterator();
 			    while(listIterator.hasNext()) {
+			    	HashMap<String, Object> map_outputs = new HashMap<String,Object>();
 			        Category category = listIterator.next();
 			        System.out.print(  "-Cat id  "+category.getId() +"Name"+category.getName());
 
