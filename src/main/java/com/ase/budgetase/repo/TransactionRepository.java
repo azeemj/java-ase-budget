@@ -15,8 +15,8 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
 
 	//Budget findByName(String name);
 
-	@Query(value = "SELECT * FROM transaction WHERE catid = ?1", nativeQuery = true)
-	List<Transaction> findAllTransactionsByCategories(int catid);
+	@Query(value = "SELECT * FROM transaction e WHERE e.catid = ?1 and year(e.datetime) = ?2 and month(e.datetime) = ?3", nativeQuery = true)
+	List<Transaction> findAllTransactionsByCategories(int catid, int year, int month);
 
 
 
