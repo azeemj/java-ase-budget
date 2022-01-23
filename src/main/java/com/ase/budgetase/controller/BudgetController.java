@@ -1,8 +1,12 @@
 package com.ase.budgetase.controller;
 
 import com.ase.budgetase.entity.Budget;
+import com.ase.budgetase.entity.Category;
 import com.ase.budgetase.service.BudgetService;
 import com.ase.budgetase.service.UtilService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,11 +57,23 @@ public class BudgetController {
 	@PutMapping("/budget")
 	public ResponseEntity<Object> updateBudget(@RequestBody Budget CategoryObj) {
 		try {
-			Budget output = budget_service.updateCategory(CategoryObj);
+			Budget output = budget_service.updateBudget(CategoryObj);
 			return UtilService.generateResponse("Successfully updated data!", HttpStatus.OK, output);
 		} catch (Exception e) {
 			return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
 		}
 	}
+	
+	//list all budgets
+	  @GetMapping("/budgets")
+	  public ResponseEntity<Object> findAllBudgets() {
+
+	    try {
+	      List<Budget> listBudget = budget_service.getAllBudget();
+	      return UtilService.generateResponse("Successfully found data!", HttpStatus.OK, listBudget);
+	    } catch (Exception e) {
+	      return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+	    }
+	  }
 
 }

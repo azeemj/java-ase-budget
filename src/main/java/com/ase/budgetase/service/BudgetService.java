@@ -44,11 +44,12 @@ public class BudgetService {
 	}
 
 
-	public Budget updateCategory(Budget Obj) {
+	public Budget updateBudget(Budget Obj) {
 		try {
 
 		Budget exisObject = budget_repo.findById(Obj.getId()).orElse(null);
 		exisObject.setAmount(Obj.getAmount());
+		exisObject.setIsrecurring(Obj.getIsrecurring());
 		return budget_repo.save(exisObject);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -63,9 +64,9 @@ public class BudgetService {
 //		return  (List<Budget>) budget_repo.findAllBudgetsByCategories(catid);
 //	}
 
-	public List<Budget> findAllBudgetsByCategories(int catid) {
+	public List<Budget> findAllBudgetsByCategories(int catid,int year, int month) {
 		// TODO Auto-generated method stub
-		return budget_repo.findAllBudgetsByCategories(catid);
+		return budget_repo.findAllBudgetsByCategories(catid, year, month);
 	}
 
 	
