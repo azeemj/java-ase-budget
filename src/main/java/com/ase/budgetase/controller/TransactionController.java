@@ -92,7 +92,7 @@ public class TransactionController {
 
 				}
 
-				map_outputs.put("transaction", array_list_trans);
+				map_outputs.put("transactions", array_list_trans);
 
 				// get allbudget
 				ArrayList<Object> array_list_budget = new ArrayList<Object>();
