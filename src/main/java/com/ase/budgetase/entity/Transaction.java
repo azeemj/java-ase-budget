@@ -16,123 +16,122 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "Transaction")
 public class Transaction extends BaseEntity {
-	@Id
-	@GeneratedValue
-	private int id;
-	private float amount;
-	private boolean isrecurring;
-	private int catid;
-	private String description;
-	private int parentid;
+  @Id
+  @GeneratedValue
+  private int id;
+  private float amount;
+  private boolean isrecurring;
+  private int catid;
+  private String description;
+  private int parentid;
 
-	@Column(name = "datetime")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime datetime;
+  @Column(name = "datetime")
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  private LocalDateTime datetime;
 
-	@Column(name = "startdate")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime startdate;
+  @Column(name = "startdate")
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  private LocalDateTime startdate;
 
-	@Column(name = "enddate")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime enddate;
+  @Column(name = "enddate")
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  private LocalDateTime enddate;
 
-	public int getId() {
-		// TODO Auto-generated method stub
-		return this.id;
-	}
+  public int getId() {
+    // TODO Auto-generated method stub
+    return this.id;
+  }
 
-	public void setId(int id) {
-		// TODO Auto-generated method stub
-		this.id = id;
+  public void setId(int id) {
+    // TODO Auto-generated method stub
+    this.id = id;
 
-	}
+  }
 
-	public LocalDateTime getdatetime() {
-		// TODO Auto-generated method stub
-		return this.datetime;
-	}
+  public LocalDateTime getdatetime() {
+    // TODO Auto-generated method stub
+    return this.datetime;
+  }
 
-	public void datetime(LocalDateTime datetime) {
-		// TODO Auto-generated method stub
-		this.datetime = datetime;
+  public void datetime(LocalDateTime datetime) {
+    // TODO Auto-generated method stub
+    this.datetime = datetime;
 
-	}
+  }
 
-	public float getAmount() {
-		// TODO Auto-generated method stub
-		return this.amount;
-	}
+  public float getAmount() {
+    // TODO Auto-generated method stub
+    return this.amount;
+  }
 
-	public void setAmount(Float amount) {
-		// TODO Auto-generated method stub
-		this.amount = amount;
+  public void setAmount(Float amount) {
+    // TODO Auto-generated method stub
+    this.amount = amount;
 
-	}
+  }
 
-	public float getCatid() {
-		// TODO Auto-generated method stub
-		return this.catid;
-	}
+  public float getCatid() {
+    // TODO Auto-generated method stub
+    return this.catid;
+  }
 
-	public void setCatid(int catid) {
-		// TODO Auto-generated method stub
-		this.catid = catid;
+  public void setCatid(int catid) {
+    // TODO Auto-generated method stub
+    this.catid = catid;
 
-	}
+  }
 
-	public boolean getIsrecurring() {
-		// TODO Auto-generated method stub
-		return this.isrecurring;
-	}
+  public boolean getIsrecurring() {
+    // TODO Auto-generated method stub
+    return this.isrecurring;
+  }
 
-	public void setIsrecurring(Boolean isrecurring) {
-		// TODO Auto-generated method stub
-		this.isrecurring = isrecurring;
+  public void setIsrecurring(Boolean isrecurring) {
+    // TODO Auto-generated method stub
+    this.isrecurring = isrecurring;
 
-	}
+  }
 
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return this.description;
-	}
+  public String getDescription() {
+    // TODO Auto-generated method stub
+    return this.description;
+  }
 
-	public void setDescription(String description) {
-		// TODO Auto-generated method stub
-		this.description = description;
+  public void setDescription(String description) {
+    // TODO Auto-generated method stub
+    this.description = description;
 
-	}
+  }
 
-	public LocalDateTime getEnddate() {
-		// TODO Auto-generated method stub
-		return this.enddate;
-	}
+  public LocalDateTime getEnddate() {
+    // TODO Auto-generated method stub
+    return this.enddate;
+  }
 
-	public void setEnddate(LocalDateTime enddate) {
-		// TODO Auto-generated method stub
-		this.enddate = enddate;
+  public void setEnddate(LocalDateTime enddate) {
+    // TODO Auto-generated method stub
+    this.enddate = enddate;
 
-	}
+  }
 
-	public int getparentid() {
-		// TODO Auto-generated method stub
-		return this.parentid;
-	}
+  public int getparentid() {
+    // TODO Auto-generated method stub
+    return this.parentid;
+  }
 
-	public void setparentid(int parentid) {
-		// TODO Auto-generated method stub
-		this.parentid = parentid;
+  public void setparentid(int parentid) {
+    // TODO Auto-generated method stub
+    this.parentid = parentid;
 
-	}
+  }
 
-	public LocalDateTime getStartdate() {
-		// TODO Auto-generated method stub
-		return this.startdate;
-	}
+  public LocalDateTime getStartdate() {
+    // TODO Auto-generated method stub
+    return this.startdate;
+  }
 
-	public void setStartdate(LocalDateTime startdate) {
-		// TODO Auto-generated method stub
-		this.startdate = startdate;
-
-	}
+  public void setStartdate(LocalDateTime startdate) {
+    // TODO Auto-generated method stub
+    this.startdate = startdate;
+  }
 }
