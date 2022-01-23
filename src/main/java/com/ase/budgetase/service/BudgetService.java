@@ -48,6 +48,7 @@ public class BudgetService {
 
 			Budget exisObject = budget_repo.findById(Obj.getId()).orElse(null);
 			exisObject.setAmount(Obj.getAmount());
+			exisObject.setCatid(Obj.getCatid());
 			exisObject.setIsrecurring(Obj.getIsrecurring());
 			return budget_repo.save(exisObject);
 		} catch (Exception e) {

@@ -37,7 +37,7 @@ public class Budget extends BaseEntity {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime datetime;
 
-	public Integer getId() {
+	public int getId() {
 		// TODO Auto-generated method stub
 		return this.id;
 	}
@@ -64,7 +64,7 @@ public class Budget extends BaseEntity {
 
 	}
 
-	public float getCatid() {
+	public int getCatid() {
 		// TODO Auto-generated method stub
 		return this.catid;
 	}
