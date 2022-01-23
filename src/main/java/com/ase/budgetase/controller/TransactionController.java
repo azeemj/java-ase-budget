@@ -50,7 +50,7 @@ public class TransactionController {
 
 			// get the year and covert it into integer
 			String[] temp = datetime.split("\\-");
-	
+
 			ArrayList<Object> array_list_categories = new ArrayList<Object>();
 
 			// list all catgories
@@ -58,15 +58,16 @@ public class TransactionController {
 
 			Iterator<Category> listIterator = CatouputList.iterator();
 			while (listIterator.hasNext()) {
-				
+
 				HashMap<String, Object> map_outputs = new HashMap<String, Object>();
-				
+
 				Category category = listIterator.next();
-				
+
 				map_outputs.put("id", category.getId());
 				map_outputs.put("name", category.getName());
+        map_outputs.put("icon", category.getIcon());
 
-				List<Transaction> TransOuput = trans_service.getAllTransactionsByCategories(category.getId(),
+        List<Transaction> TransOuput = trans_service.getAllTransactionsByCategories(category.getId(),
 						Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
 
 				System.out.print(",TransOuput " + TransOuput);
@@ -92,16 +93,16 @@ public class TransactionController {
 				}
 
 				map_outputs.put("transaction", array_list_trans);
-				
+
 				// get allbudget
 				ArrayList<Object> array_list_budget = new ArrayList<Object>();
-				
+
 				List BudgetOuput = budget_service.findAllBudgetsByCategories(category.getId());
-				
+
 				Iterator<Budget> listIteratorBudegtIterator = BudgetOuput.iterator();
-				
+
 				while (listIteratorBudegtIterator.hasNext()) {
-					
+
 					HashMap<String, Object> map_output = new HashMap<String, Object>();
 
 					Budget budgetList = listIteratorBudegtIterator.next();
@@ -113,7 +114,7 @@ public class TransactionController {
 
 					array_list_trans.add(map_output);
 				}
-				
+
 				map_outputs.put("budget", array_list_trans);
 
 				array_list_categories.add(map_outputs);
@@ -126,5 +127,5 @@ public class TransactionController {
 		}
 	}
 
-	
+
 }
