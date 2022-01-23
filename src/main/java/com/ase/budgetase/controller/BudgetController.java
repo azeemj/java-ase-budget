@@ -36,6 +36,7 @@ public class BudgetController {
 		try {
 			Budget ouputBudget = budget_service.saveBudget(budgetObj);
 
+			
 			return UtilService.generateResponse("Successfully added data!", HttpStatus.OK, ouputBudget);
 		} catch (Exception e) {
 			return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);

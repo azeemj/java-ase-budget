@@ -22,6 +22,16 @@ public class Budget extends BaseEntity {
 	private float amount;
 	private int catid;
 	private boolean isrecurring;
+	private int parentid;
+	
+	@Column(name = "startdate")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime startdate;
+	
+	
+	@Column(name = "enddate")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime enddate;
 
 	@Column(name = "datetime")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -37,7 +47,7 @@ public class Budget extends BaseEntity {
 		return this.datetime;
 	}
 
-	public void getDatetime(LocalDateTime datetime) {
+	public void setDatetime(LocalDateTime datetime) {
 		// TODO Auto-generated method stub
 		this.datetime = datetime;
 
@@ -73,6 +83,41 @@ public class Budget extends BaseEntity {
 	public void setIsrecurring(Boolean isrecurring) {
 		// TODO Auto-generated method stub
 		this.isrecurring = isrecurring;
+
+	}
+	
+	
+
+	public LocalDateTime getStartdate() {
+		// TODO Auto-generated method stub
+		return this.startdate;
+	}
+
+	public void setStartdate(LocalDateTime startdate) {
+		// TODO Auto-generated method stub
+		this.startdate = startdate;
+
+	}
+	
+	public LocalDateTime getEnddate() {
+		// TODO Auto-generated method stub
+		return this.enddate;
+	}
+
+	public void setEnddate(LocalDateTime enddate) {
+		// TODO Auto-generated method stub
+		this.enddate = enddate;
+
+	}
+	
+	public int getparentid() {
+		// TODO Auto-generated method stub
+		return this.parentid;
+	}
+
+	public void setparentid(int parentid) {
+		// TODO Auto-generated method stub
+		this.parentid = parentid;
 
 	}
 
