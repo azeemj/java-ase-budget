@@ -1,10 +1,12 @@
 package com.ase.budgetase.service;
 
 import com.ase.budgetase.entity.Transaction;
+import com.ase.budgetase.logic.TransactionsFactory;
 import com.ase.budgetase.repo.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.jta.TransactionFactory;
 
 import com.ase.budgetase.entity.Budget;
 import com.ase.budgetase.repo.BudgetRepository;
@@ -19,13 +21,16 @@ import java.util.List;
 public class TransactionService {
 
 	@Autowired
-	private TransactionRepository trans_repo;
+	public TransactionRepository trans_repo;
+	
+	private TransactionsFactory tFactory;
 
 	public Transaction saveTrans(Transaction obj) {
 
-		//return trans_repo.save(obj);
-		setRecurring(obj, trans_repo);
-		return obj;
+        //return trans_repo.save(obj);
+    	AbstractTransactionService abs = tFactory.createTransaction(obj);
+    	System.out.print("abs" + abs);
+		return abs.saveTrans(obj, trans_repo);
 
 	}
 
@@ -40,7 +45,6 @@ public class TransactionService {
 	}
 
 	public List<Transaction> getTransactionsByMonthYear(int year, int month) {
-		System.out.print("year" + year);
 		return Collections.emptyList();
 	}
 	

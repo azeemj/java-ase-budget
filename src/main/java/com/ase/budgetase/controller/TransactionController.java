@@ -32,6 +32,9 @@ public class TransactionController {
 
 	@Autowired
 	private BudgetService budget_service;
+	
+	private CurrencyFactory currency;
+	
 
 	@PostMapping("/transaction")
 	public ResponseEntity<Object> addTransAction(@RequestBody Transaction obj) {
@@ -50,6 +53,9 @@ public class TransactionController {
 
 		try {
 
+			String currencyCountry = "US";
+			CurrencyInterface currencySymbol = (CurrencyInterface) currency.createCurrency(currencyCountry);
+			
 			// get the year and covert it into integer
 			String[] temp = datetime.split("\\-");
 
@@ -72,7 +78,7 @@ public class TransactionController {
 
 				map_outputs.put("id", category.getId());
 				map_outputs.put("name", category.getName());
-        map_outputs.put("icon", category.getIcon());
+               map_outputs.put("icon", category.getIcon());
 
         List<Transaction> TransOuput = trans_service.getAllTransactionsByCategories(category.getId(),
 						Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
@@ -94,6 +100,7 @@ public class TransactionController {
 					map_output.put("isRecurring", transList.getIsrecurring());
 					map_output.put("datetime", transList.getdatetime());
 					map_output.put("description", transList.getDescription());
+					map_output.put("currency", currencySymbol.getCurrencySymbol());
 
 					array_list_trans.add(map_output);
 					
