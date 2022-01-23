@@ -51,10 +51,10 @@ public class TransactionController {
 			// get the year and covert it into integer
 			String[] temp = datetime.split("\\-");
 
-			
+
 			//total amount category wise
 			float transactionCategoryWsie = 0;
-	
+
 
 			ArrayList<Object> array_list_categories = new ArrayList<Object>();
 
@@ -94,7 +94,7 @@ public class TransactionController {
 					map_output.put("description", transList.getDescription());
 
 					array_list_trans.add(map_output);
-					
+
 					transactionCategoryWsie = transactionCategoryWsie + transList.getAmount() ;
 
 				}
@@ -104,17 +104,17 @@ public class TransactionController {
 				// get allbudget
 				ArrayList<Object> array_list_budget = new ArrayList<Object>();
 
-				
+
 				List BudgetOuput = budget_service.findAllBudgetsByCategories(category.getId(),
 						Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
-				
+
 
 
 				Iterator<Budget> listIteratorBudegtIterator = BudgetOuput.iterator();
 
 				while (listIteratorBudegtIterator.hasNext()) {
 
-					
+
 					HashMap<String, Object> map_budget = new HashMap<String, Object>();
 
 
@@ -132,15 +132,10 @@ public class TransactionController {
 					array_list_budget.add(map_budget);
 				}
 
-				
+
 				map_outputs.put("budget", array_list_budget);
+				map_outputs.put("totalAmount",transactionCategoryWsie);
 
-
-				map_outputs.put("budget", array_list_trans);
-
-
-				map_outputs.put("totalaCtegorywise",transactionCategoryWsie);
-				
 				array_list_categories.add(map_outputs);
 			}
 
@@ -150,7 +145,7 @@ public class TransactionController {
 			return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
 		}
 	}
-	
+
 	//update category
 	  @PutMapping("/transaction")
 	  public ResponseEntity<Object> updateTransaction(@RequestBody Transaction transObj) {
