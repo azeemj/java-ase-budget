@@ -39,5 +39,22 @@ public class TransactionService {
 		System.out.print("year" + year);
 		return Collections.emptyList();
 	}
+	
+	public Transaction updateTransaction(Transaction Obj) {
+		try {
+
+		Transaction exisObject = trans_repo.findById(Obj.getId()).orElse(null);
+		exisObject.setAmount(Obj.getAmount());
+		exisObject.setDescription(Obj.getDescription());
+		exisObject.setIsrecurring(Obj.getIsrecurring());
+		exisObject.datetime(Obj.getdatetime());
+			
+		return trans_repo.save(exisObject);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Exception"+ e);
+			return Obj;
+		}
+	}
 
 }

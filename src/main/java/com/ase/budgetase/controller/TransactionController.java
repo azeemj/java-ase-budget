@@ -51,6 +51,11 @@ public class TransactionController {
 			// get the year and covert it into integer
 			String[] temp = datetime.split("\\-");
 
+			
+			//total amount category wise
+			float transactionCategoryWsie = 0;
+	
+
 			ArrayList<Object> array_list_categories = new ArrayList<Object>();
 
 			// list all catgories
@@ -89,6 +94,8 @@ public class TransactionController {
 					map_output.put("description", transList.getDescription());
 
 					array_list_trans.add(map_output);
+					
+					transactionCategoryWsie = transactionCategoryWsie + transList.getAmount() ;
 
 				}
 
@@ -97,26 +104,43 @@ public class TransactionController {
 				// get allbudget
 				ArrayList<Object> array_list_budget = new ArrayList<Object>();
 
-				List BudgetOuput = budget_service.findAllBudgetsByCategories(category.getId());
+				
+				List BudgetOuput = budget_service.findAllBudgetsByCategories(category.getId(),
+						Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
+				
+
 
 				Iterator<Budget> listIteratorBudegtIterator = BudgetOuput.iterator();
 
 				while (listIteratorBudegtIterator.hasNext()) {
 
+					
+					HashMap<String, Object> map_budget = new HashMap<String, Object>();
+
+
 					HashMap<String, Object> map_output = new HashMap<String, Object>();
+
 
 					Budget budgetList = listIteratorBudegtIterator.next();
 
-					map_output.put("id", budgetList.getId());
-					map_output.put("amount", budgetList.getAmount());
-					map_output.put("datetime", budgetList.getdatetime());
-					map_output.put("catid", budgetList.getCatid());
+					map_budget.put("id", budgetList.getId());
+					map_budget.put("amount", budgetList.getAmount());
+					map_budget.put("datetime", budgetList.getdatetime());
+					map_budget.put("catid", budgetList.getCatid());
+					map_budget.put("isRecurring", budgetList.getIsrecurring());
 
-					array_list_trans.add(map_output);
+					array_list_budget.add(map_budget);
 				}
+
+				
+				map_outputs.put("budget", array_list_budget);
+
 
 				map_outputs.put("budget", array_list_trans);
 
+
+				map_outputs.put("totalaCtegorywise",transactionCategoryWsie);
+				
 				array_list_categories.add(map_outputs);
 			}
 
@@ -126,6 +150,17 @@ public class TransactionController {
 			return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
 		}
 	}
+	
+	//update category
+	  @PutMapping("/transaction")
+	  public ResponseEntity<Object> updateTransaction(@RequestBody Transaction transObj) {
+	    try {
+	      Transaction updateObj = trans_service.updateTransaction(transObj);
+	      return UtilService.generateResponse("Successfully updated data!", HttpStatus.OK, updateObj);
+	    } catch (Exception e) {
+	      return UtilService.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+	    }
+	  }
 
 
 }
