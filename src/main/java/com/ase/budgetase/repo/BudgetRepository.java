@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface BudgetRepository extends JpaRepository<Budget, Integer> {
 
-	@Query(value = "SELECT * FROM tarnsaction WHERE catid = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM budget WHERE catid = ?1", nativeQuery = true)
 	List<Budget> findAllBudgetsByCategories(int catid);
 
   

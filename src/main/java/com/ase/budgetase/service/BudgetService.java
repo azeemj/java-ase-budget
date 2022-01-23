@@ -2,7 +2,7 @@ package com.ase.budgetase.service;
 
 import com.ase.budgetase.entity.Budget;
 import com.ase.budgetase.entity.Category;
-import com.ase.budgetase.entity.Tarnsaction;
+import com.ase.budgetase.entity.Transaction;
 import com.ase.budgetase.repo.BudgetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,9 +47,9 @@ public class BudgetService {
 	public Budget updateCategory(Budget Obj) {
 		try {
 
-		Budget exisCategobject = budget_repo.findById(Obj.getId()).orElse(null);
-		exisCategobject.setAmount(Obj.amount());
-		return budget_repo.save(exisCategobject);
+		Budget exisObject = budget_repo.findById(Obj.getId()).orElse(null);
+		exisObject.setAmount(Obj.getAmount());
+		return budget_repo.save(exisObject);
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("Exception"+ e);
@@ -65,7 +65,7 @@ public class BudgetService {
 
 	public List<Budget> findAllBudgetsByCategories(int catid) {
 		// TODO Auto-generated method stub
-		return    budget_repo.findAllBudgetsByCategories(catid);
+		return budget_repo.findAllBudgetsByCategories(catid);
 	}
 
 	

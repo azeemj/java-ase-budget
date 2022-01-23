@@ -39,14 +39,14 @@ public class Budget extends BaseEntity {
     return this.datetime;
   }
 
-  public void datetime(LocalDateTime datetime) {
+  public void getDatetime(LocalDateTime datetime) {
     // TODO Auto-generated method stub
     this.datetime = datetime;
 
   }
 
 
-  public float amount() {
+  public float getAmount() {
     // TODO Auto-generated method stub
     return this.amount;
   }
@@ -57,7 +57,7 @@ public class Budget extends BaseEntity {
 
   }
 
-  public float catid() {
+  public float getCatid() {
     // TODO Auto-generated method stub
     return this.catid;
   }
