@@ -10,59 +10,57 @@ import java.util.List;
 @Service
 public class CategoryService {
 
-	@Autowired
-	private CategoryRepository cat_repo;
-	private UtilService util_serivceService;
+  @Autowired
+  private CategoryRepository cat_repo;
+  private UtilService util_serivceService;
 
 
-	public Category saveCategory(Category categoryObj) {
+  public Category saveCategory(Category categoryObj) {
 
-		Category output =cat_repo.save(categoryObj);
+    Category output = cat_repo.save(categoryObj);
 
-		return output;
-	}
+    return output;
+  }
 
-	public List <Category> getAllCategories(){
+  public List<Category> getAllCategories() {
 
-		return cat_repo.findAll();
-	}
+    return cat_repo.findAll();
+  }
 
-	public Category getCategoryById(int id){
+  public Category getCategoryById(int id) {
 
-		return cat_repo.findById(id).orElse(null);
-	}
+    return cat_repo.findById(id).orElse(null);
+  }
 
-	public Category getCategoryByName(String name){
+  public Category getCategoryByName(String name) {
 
-		return cat_repo.findByName(name);
-	}
+    return cat_repo.findByName(name);
+  }
 
-	public boolean deleteCategoryById(int id) {
-		try {
-		cat_repo.deleteById(id);
-		return true;
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println("Exception"+ e);
-			return false;
-		}
-	}
+  public boolean deleteCategoryById(int id) {
+    try {
+      cat_repo.deleteById(id);
+      return true;
+    } catch (Exception e) {
+      // TODO: handle exception
+      System.out.println("Exception" + e);
+      return false;
+    }
+  }
 
-	public Category updateCategory(Category catObj) {
-		try {
-
-
-		System.out.println("catobj"+ catObj.getId());
-		Category exisCategobject = cat_repo.findById(catObj.getId()).orElse(null);
-		exisCategobject.setName(catObj.getName());
-		exisCategobject.seIcon(catObj.getIcon());
-		return cat_repo.save(exisCategobject);
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println("Exception"+ e);
-			return catObj;
-		}
-	}
+  public Category updateCategory(Category catObj) {
+    try {
+      System.out.println("catobj" + catObj.getId());
+      Category exisCategobject = cat_repo.findById(catObj.getId()).orElse(null);
+      exisCategobject.setName(catObj.getName());
+      exisCategobject.seIcon(catObj.getIcon());
+      return cat_repo.save(exisCategobject);
+    } catch (Exception e) {
+      // TODO: handle exception
+      System.out.println("Exception" + e);
+      return catObj;
+    }
+  }
 
 
 }

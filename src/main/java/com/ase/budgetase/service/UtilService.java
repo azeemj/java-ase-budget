@@ -6,22 +6,13 @@ import org.springframework.http.ResponseEntity;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class UtilService extends CustomResponse {
-
-
-  String getCustomSucessResponse(CustomResponse obj) {
-
-    return "{content:{" + obj + "},status:true }";
-  }
-
   public static LocalDateTime getDatetime() {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     return LocalDateTime.parse(LocalDateTime.now().toString(), formatter);
   }
-
 
   public static ResponseEntity<Object> generateResponse(String message, HttpStatus status, Object responseObj) {
     Map<String, Object> map = new HashMap<String, Object>();
@@ -37,6 +28,4 @@ public class UtilService extends CustomResponse {
 
     return new ResponseEntity<Object>(map, status);
   }
-  
-  
 }
