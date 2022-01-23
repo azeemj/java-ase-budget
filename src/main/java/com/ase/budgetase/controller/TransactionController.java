@@ -22,8 +22,6 @@ import com.ase.budgetase.entity.*;
 
 import com.ase.budgetase.service.*;
 
-import sun.jvm.hotspot.oops.Array;
-
 
 
 @RestController
@@ -40,11 +38,11 @@ public class TransactionController {
 	private BudgetService budget_service;
 
 	@PostMapping("/transaction")
-	public ResponseEntity<Object> addTransAction(@RequestBody Tarnsaction obj) {
+	public ResponseEntity<Object> addTransAction(@RequestBody Transaction obj) {
 
 
 		try {
-			Tarnsaction ouput= trans_service.saveTrans(obj);
+			Transaction ouput= trans_service.saveTrans(obj);
 
 			return UtilService.generateResponse("Successfully added data!", HttpStatus.OK, ouput);
 		} catch (Exception e) {

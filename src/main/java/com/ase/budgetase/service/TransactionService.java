@@ -1,13 +1,12 @@
 package com.ase.budgetase.service;
 
-import com.ase.budgetase.entity.Tarnsaction;
+import com.ase.budgetase.entity.Transaction;
 import com.ase.budgetase.repo.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.ase.budgetase.entity.Budget;
-import com.ase.budgetase.entity.Tarnsaction;
 import com.ase.budgetase.repo.BudgetRepository;
 import com.ase.budgetase.repo.TransactionRepository;
 
@@ -22,18 +21,18 @@ public class TransactionService  {
 
 
 
-	public Tarnsaction saveTrans(Tarnsaction obj) {
+	public Transaction saveTrans(Transaction obj) {
 
 		return trans_repo.save(obj);
 
 	}
 
-	public List <Tarnsaction> getAllTransactions(){
+	public List <Transaction> getAllTransactions(){
 
 		return trans_repo.findAll();
 	}
 
-	public List<Tarnsaction> getAllTransactionsByCategories(int catid){
+	public List<Transaction> getAllTransactionsByCategories(int catid){
 
 		return  trans_repo.findAllTransactionsByCategories(catid);
 	}
@@ -41,7 +40,7 @@ public class TransactionService  {
 
 
 
-	public List <Tarnsaction> getTransactionsByMonthYear(int year, int month){
+	public List <Transaction> getTransactionsByMonthYear(int year, int month){
 		System.out.print("year"+year);
 		return   Collections.emptyList();
 	}

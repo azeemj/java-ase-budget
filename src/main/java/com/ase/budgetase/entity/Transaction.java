@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "Transaction")
-public class Tarnsaction extends BaseEntity {
+public class Transaction extends BaseEntity {
   @Id
   @GeneratedValue
   private int id;
