@@ -1,3 +1,16 @@
+Scope:
+
+
+
+
+
+
+To read implementation:https://github.com/azeemj/java-ase-budget/blob/main/Design%20pattern.pdf
+
+
+
+
+
 # java-ase-budget
 
 1. POST Method    http://localhost:9191/category
